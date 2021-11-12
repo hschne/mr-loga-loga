@@ -1,0 +1,32 @@
+AllCops:
+  TargetRubyVersion: 2.6
+  NewCops: enable
+  SuggestExtensions: false
+  Exclude:
+    - vendor/**/*
+    - node_modules/**/*
+    - gemfiles/**/*
+    - db/migrate/*.rb
+    - !ruby/regexp /schema\.rb$/
+
+Layout/LineLength:
+  Max: 120
+
+Layout/MultilineMethodCallIndentation:
+  EnforcedStyle: indented_relative_to_receiver
+
+Metrics/AbcSize:
+  Max: 20
+
+Metrics/MethodLength:
+  CountAsOne: ['array', 'heredoc']
+  Max: 15
+
+Metrics/BlockLength:
+  IgnoredMethods: ['describe', 'context']
+
+Metrics/ModuleLength:
+  Exclude: ['**/*_spec.rb']
+
+Style/OpenStructUse:
+  Exclude: ['**/*_spec.rb']
