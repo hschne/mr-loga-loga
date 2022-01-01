@@ -6,7 +6,7 @@
 
 ### The simply bombastic, fantastic logger for Ruby 💎
 
-[![Gem Version](https://badge.fury.io/rb/rails_mini_profiler.svg)](https://badge.fury.io/rb/rails_mini_profiler)
+[![Gem Version](https://badge.fury.io/rb/mr_loga_loga.svg)](https://badge.fury.io/rb/mr_loga_loga)
 [![Main](https://github.com/hschne/mr-loga-loga/actions/workflows/main.yml/badge.svg)](https://github.com/hschne/mr-loga-loga/actions/workflows/main.yml)
 [![License](https://img.shields.io/github/license/hschne/mr-loga-loga)](https://img.shields.io/github/license/mr-loga-loga)
 
