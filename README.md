@@ -9,6 +9,7 @@
 [![Gem Version](https://badge.fury.io/rb/mr_loga_loga.svg)](https://badge.fury.io/rb/mr_loga_loga)
 [![Main](https://github.com/hschne/mr-loga-loga/actions/workflows/main.yml/badge.svg)](https://github.com/hschne/mr-loga-loga/actions/workflows/main.yml)
 ![License](https://img.shields.io/github/license/hschne/mr-loga-loga)
+</div>
 
 ## What's this?
 
