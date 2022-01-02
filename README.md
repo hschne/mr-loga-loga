@@ -168,7 +168,7 @@ logger.debug("my message user=#{user} more_data=#{data}")
 
 This is fine, as long as you do not need to change your log format. Changing your log formatter will not change the format of your message, nor the formatting of the contextual information you provided.
 
-MrLogaLoga addresses this by allowing you to attach contextual information to your logs and giving you full control over how both message and context are formatted.
+MrLogaLoga addresses this by allowing you to attach contextual information to your logs and giving you full control over how both message and context are formatted. There are other gems doing similar things, most notably [Semantic Logger](https://logger.rocketjob.io/). Where Semantic Logger provides lots of functionality related to logging, MrLogaLoga focuses on making it nice to write log messages - and nothing more. 
 
 ## Credit
 
