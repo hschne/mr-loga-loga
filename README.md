@@ -173,6 +173,8 @@ MrLogaLoga addresses this by allowing you to attach contextual information to yo
 
 ## Credit
 
+This little library was inspired by [Lograge](https://github.com/roidrage/lograge) first and foremost. I would like to thank the amazing [@LenaSchnedlitz](https://twitter.com/LenaSchnedlitz) for the incredible logo! 🤩
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake` to run the tests and linter. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
