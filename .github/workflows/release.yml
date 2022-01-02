@@ -1,0 +1,79 @@
+name: release
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'The release version'
+        required: true
+
+jobs:
+  prepare-release:
+    runs-on: ubuntu-latest
+    outputs:
+      release_created: ${{ steps.release.outputs.release_created }}
+      version: ${{ steps.release.outputs.major }}.${{ steps.release.outputs.minor }}.${{ steps.release.outputs.patch }}
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Generate Release 🗒️
+        uses: GoogleCloudPlatform/release-please-action@v2
+        id: release
+        with:
+          release-type: ruby
+          package-name: mr-loga-loga
+          bump-minor-pre-major: true
+          version-file: 'dummy.rb' # Don't set the version file, we do version increments ourselves on release
+
+  release:
+    needs: prepare-release
+    runs-on: ubuntu-latest
+    if: needs.prepare-release.outputs.release_created || github.event_name == 'workflow_dispatch'
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+        env:
+          BUNDLE_WITHOUT: 'development'
+
+      - name: Release Version
+        id: release-version
+        run: |
+          if [[ ${{github.event_name}} == 'workflow_dispatch' ]]; then
+            version=${{ github.event.inputs.version }}
+          else
+            version=${{ needs.prepare-release.outputs.version }}
+          fi
+          echo "::set-output name=version::$version"
+
+      - name: Bump Gem Version
+        run: |
+          sed -i "s|\(VERSION = \)'.*'|\1'${{ steps.release-version.outputs.version }}'|" lib/mr_loga_loga/version.rb
+
+      - name: Update Gemfile.lock
+        run: |
+          bundle config unset deployment
+          bundle install --jobs 4
+
+      - name: Publish Gem 💎
+        run: |
+          mkdir -p $HOME/.gem
+          touch $HOME/.gem/credentials
+          chmod 0600 $HOME/.gem/credentials
+          printf -- "---\n:rubygems_api_key: ${RUBYGEMS_API_KEY}\n" > $HOME/.gem/credentials
+          gem build *.gemspec
+          gem push *.gem
+        env:
+          RUBYGEMS_API_KEY: ${{secrets.RUBYGEMS_API_KEY}}
+
+      - name: Commit Updated Files 📤
+        uses: EndBug/add-and-commit@v7
+        with:
+          add: "['Gemfile.lock', 'package.json', 'package-lock.json']"
+          message: "chore: post-release ${{ steps.release-version.outputs.version }}"
