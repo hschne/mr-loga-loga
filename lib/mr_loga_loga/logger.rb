@@ -20,6 +20,14 @@ module MrLogaLoga
   #   logger.debug("Default")
   #   logger.context(user: 1).debug('with context')
   class Logger < ::Logger
+    # rubocop:disable Metrics/ParameterLists
+    def initialize(logdev, shift_age = 0, shift_size = 1_048_576, level: DEBUG,
+                   progname: nil, formatter: MrLogaLoga::Formatters::KeyValue.new, datetime_format: nil,
+                   binmode: false, shift_period_suffix: '%Y%m%d')
+      super
+    end
+    # rubocop:enable Metrics/ParameterLists
+
     def context(**kwargs, &block)
       context = block ? -> { kwargs.merge(block.call) } : kwargs
       Context.new(self, context)
@@ -73,11 +81,7 @@ module MrLogaLoga
     end
 
     def format(severity, datetime, progname, message, context)
-      formatter.call(severity, datetime, progname, message, context)
-    end
-
-    def formatter
-      @formatter ||= MrLogaLoga::Formatters::KeyValue.new
+      @formatter.call(severity, datetime, progname, message, **context)
     end
   end
 end

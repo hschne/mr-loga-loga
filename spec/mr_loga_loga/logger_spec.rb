@@ -4,11 +4,11 @@ module MrLogaLoga
   RSpec.describe Logger do
     subject { described_class.new($stdout, formatter: formatter) }
 
-    let(:formatter) { ->(severity, _datetime, _progname, message, _context) { "#{severity} #{message}" } }
+    let(:formatter) { ->(severity, _datetime, _progname, message, **_context) { "#{severity} #{message}" } }
 
     describe '#add' do
       context 'level' do
-        let(:formatter) { ->(severity, _datetime, _progname, _message, _context) { severity } }
+        let(:formatter) { ->(severity, _datetime, _progname, _message, **_context) { severity } }
 
         subject { described_class.new($stdout, formatter: formatter, level: 3) }
 
@@ -22,7 +22,7 @@ module MrLogaLoga
       end
 
       context 'severity' do
-        let(:formatter) { ->(severity, _datetime, _progname, _message, _context) { severity } }
+        let(:formatter) { ->(severity, _datetime, _progname, _message, **_context) { severity } }
 
         it 'should log severity' do
           expect { subject.log(Logger::Severity::DEBUG, 'message') }.to output('DEBUG').to_stdout
@@ -30,7 +30,7 @@ module MrLogaLoga
       end
 
       context 'date time' do
-        let(:formatter) { ->(_severity, datetime, _progname, _message, _context) { datetime.to_s } }
+        let(:formatter) { ->(_severity, datetime, _progname, _message, **_context) { datetime.to_s } }
 
         it 'should log time' do
           expect { subject.log(Logger::Severity::DEBUG, 'message') }.to output(Time.now.to_s).to_stdout
@@ -38,7 +38,7 @@ module MrLogaLoga
       end
 
       context 'message' do
-        let(:formatter) { ->(_severity, _datetime, _progname, message, _context) { message } }
+        let(:formatter) { ->(_severity, _datetime, _progname, message, **_context) { message } }
 
         it 'should log message' do
           expect { subject.log(Logger::Severity::DEBUG, 'message') }.to output('message').to_stdout

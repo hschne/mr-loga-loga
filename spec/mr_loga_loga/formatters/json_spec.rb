@@ -18,7 +18,7 @@ module MrLogaLoga
           key2: 2
         }
         expected = "#{expected.to_json}\n"
-        expect(subject.call('DEBUG', Time.now, 'progname', 'message', { key1: 'key1', key2: 2 }))
+        expect(subject.call('DEBUG', Time.now, 'progname', 'message', key1: 'key1', key2: 2))
           .to eq(expected)
       end
 
@@ -30,7 +30,7 @@ module MrLogaLoga
           progname: 'progname'
         }
         expected = "#{expected.to_json}\n"
-        expect(subject.call('DEBUG', Time.now, 'progname', nil, {}))
+        expect(subject.call('DEBUG', Time.now, 'progname', nil, key1: nil))
           .to eq(expected)
       end
     end
