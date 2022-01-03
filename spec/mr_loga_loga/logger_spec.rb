@@ -55,8 +55,8 @@ module MrLogaLoga
             expect { subject.log(Logger::Severity::DEBUG) { 'message' } }.to output('message').to_stdout
           end
 
-          it 'should overwrite arg message' do
-            expect { subject.log(Logger::Severity::DEBUG, 'arg') { 'message' } }.to output('message').to_stdout
+          it 'should not overwrite arg message' do
+            expect { subject.log(Logger::Severity::DEBUG, 'arg') { 'message' } }.to output('arg').to_stdout
           end
         end
       end
@@ -89,7 +89,7 @@ module MrLogaLoga
         expect { subject.a(2) { 1 }.add(Logger::Severity::DEBUG) }.to output(context.to_s).to_stdout
       end
     end
-    describe '#log' do
+    describe '#log?' do
       context 'without log dev' do
         subject { described_class.new(nil, formatter: formatter) }
 

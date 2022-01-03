@@ -16,8 +16,8 @@ module MrLogaLoga
     end
 
     def loga_loga
-      @loga_loga ||= if defined?(Rails.application.logger)
-                       Rails.application.logger
+      @loga_loga ||= if defined?(Rails.logger)
+                       Rails.logger
                      else
                        MrLogaLoga.configuration.logger
                      end

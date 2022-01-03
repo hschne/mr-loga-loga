@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'byebug'
-
 module MrLogaLoga
   module Adapters
     # This patches Lograge to forward data as context to MrLogaLoga

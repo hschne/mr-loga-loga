@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'logger'
+require 'forwardable'
 
 module MrLogaLoga
   # == Description
@@ -9,30 +10,30 @@ module MrLogaLoga
   #
   # @api private
   class LoggerProxy
+    extend Forwardable
+
     def initialize(logger, context_proc)
       @logger = logger
       @context_proc = context_proc
     end
 
-    def add(severity, message = nil, **context, &block)
+    def add(severity, message = nil, progname = nil, **context, &block)
       severity ||= UNKNOWN
       return true unless @logger.log?(severity)
 
       context = @context_proc.call.merge(context)
 
-      @logger.add(severity, message, **context, &block)
+      @logger.add(severity, message, progname, **context, &block)
     end
 
     alias log add
 
     %i[debug info warn error fatal unknown].each do |symbol|
-      define_method(symbol) do |message = nil, **context, &block|
+      def_delegator :@logger, "#{symbol}?".to_sym, "#{symbol}?".to_sym
+
+      define_method(symbol) do |progname = nil, **context, &block|
         severity = Object.const_get("Logger::Severity::#{symbol.to_s.upcase}")
-        return true unless @logger.log?(severity)
-
-        context = @context_proc.call.merge(context)
-
-        @logger.public_send(symbol, message, **context, &block)
+        add(severity, nil, progname, **context, &block)
       end
     end
   end

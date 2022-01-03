@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'byebug'
-
 require_relative 'mr_loga_loga/version'
 require_relative 'mr_loga_loga/configuration'
 require_relative 'mr_loga_loga/logger_proxy'
@@ -11,6 +9,7 @@ require_relative 'mr_loga_loga/logger'
 require_relative 'mr_loga_loga/formatters/key_value'
 require_relative 'mr_loga_loga/formatters/json'
 
+require_relative 'mr_loga_loga/extensions/active_support_logger_patch'
 require_relative 'mr_loga_loga/extensions/lograge_patch'
 
 # == Description

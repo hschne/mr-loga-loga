@@ -26,6 +26,7 @@ module MrLogaLoga
                    binmode: false, shift_period_suffix: '%Y%m%d')
       super
     end
+
     # rubocop:enable Metrics/ParameterLists
 
     def context(**kwargs, &block)
@@ -38,11 +39,21 @@ module MrLogaLoga
       Message.new(self, message)
     end
 
-    def add(severity, message = nil, progname = nil, **context, &block)
+    def add(severity, message = nil, progname = nil, *_args, **context, &block)
       severity ||= UNKNOWN
       return true unless log?(severity)
 
-      message = block.call if block
+      progname = @progname if progname.nil?
+
+      if message.nil?
+        if block
+          message = block.call
+        else
+          message = progname
+          progname = @progname
+        end
+      end
+
       @logdev.write(format(format_severity(severity), Time.now, progname, message, context))
       true
     end
@@ -50,10 +61,10 @@ module MrLogaLoga
     alias log add
 
     %i[debug info warn error fatal unknown].each do |symbol|
-      define_method(symbol) do |message = nil, **context, &block|
+      define_method(symbol) do |progname = nil, **context, &block|
         # Map the symbol (e.g. :debug) to the severity constant (e.g. DEBUG)
         severity = Object.const_get("Logger::Severity::#{symbol.to_s.upcase}")
-        add(severity, message, **context, &block)
+        add(severity, nil, progname, **context, &block)
       end
     end
 
