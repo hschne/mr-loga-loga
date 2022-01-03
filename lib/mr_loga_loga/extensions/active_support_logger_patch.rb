@@ -2,8 +2,7 @@
 
 module MrLogaLoga
   module Adapters
-    # This patches Lograge to forward data as context to MrLogaLoga
-    #
+    # This patches ActiveSupport::Logger to allow forwarding keyword arguments
     module ActiveSupportLoggerPatch
       class << self
         def apply
