@@ -12,7 +12,11 @@ module MrLogaLoga
     end
 
     def logger
-      MrLogaLoga::LoggerProxy.new(loga_loga, -> { loga_context })
+      if loga_loga.is_a?(MrLogaLoga::Logger)
+        MrLogaLoga::LoggerProxy.new(loga_loga, -> { loga_context })
+      else
+        loga_loga
+      end
     end
 
     def loga_loga
