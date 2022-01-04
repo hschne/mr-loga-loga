@@ -1,5 +1,12 @@
 ## [Unreleased]
 
+### [0.1.2](https://www.github.com/hschne/mr-loga-loga/compare/v0.1.1...v0.1.2) (2022-01-04)
+
+
+### Bug Fixes
+
+* only delegate when logger is loga loga ([55bd0db](https://www.github.com/hschne/mr-loga-loga/commit/55bd0dbdee5b975c80effac90e989eb08d2b6948))
+
 ### [0.1.1](https://www.github.com/hschne/mr-loga-loga/compare/v0.1.0...v0.1.1) (2022-01-03)
 
 
