@@ -1,5 +1,13 @@
 ## [Unreleased]
 
+### [0.1.2](https://github.com/hschne/mr-loga-loga/compare/v0.1.1...v0.1.2) (2022-01-05)
+
+
+### Bug Fixes
+
+* improve rails patch ([a31cdf1](https://github.com/hschne/mr-loga-loga/commit/a31cdf1b655bfaeb2351bff818ca0af83293ace5))
+* only delegate when logger is loga loga ([55bd0db](https://github.com/hschne/mr-loga-loga/commit/55bd0dbdee5b975c80effac90e989eb08d2b6948))
+
 ### [0.1.1](https://www.github.com/hschne/mr-loga-loga/compare/v0.1.0...v0.1.1) (2022-01-03)
 
 
