@@ -67,7 +67,7 @@ logger.user('name').info('message') # Dynamic context method
 logger.user { 'name' }.info('message') # Dynamic context block
 ```
 
-The block syntax [ is recommended when logging calculated properties ](https://ruby-doc.org/stdlib-2.4.0/libdoc/logger/rdoc/Logger.html#class-Logger-label-How+to+log+a+message). You can find more in-depth information about specific method in the [Code Documentation](./doc).
+The block syntax [ is recommended when logging calculated properties ](https://ruby-doc.org/stdlib-2.4.0/libdoc/logger/rdoc/Logger.html#class-Logger-label-How+to+log+a+message). You can find more in-depth information about specific method in the [Code Documentation](https://www.hschne.at/mr-loga-loga/).
 
 #### Shared Context
 
