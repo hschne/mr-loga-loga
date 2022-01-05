@@ -9,8 +9,8 @@ require_relative 'mr_loga_loga/logger'
 require_relative 'mr_loga_loga/formatters/key_value'
 require_relative 'mr_loga_loga/formatters/json'
 
-require_relative 'mr_loga_loga/extensions/active_support_logger_patch'
-require_relative 'mr_loga_loga/extensions/lograge_patch'
+require_relative 'mr_loga_loga/extensions/rails'
+require_relative 'mr_loga_loga/extensions/lograge'
 
 # == Description
 #
