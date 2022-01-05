@@ -13,7 +13,8 @@
 
 ## What's this?
 
-MrLogaLoga is a logger for Ruby that allows you to easily attach contextual information to your log messages. When writing logs, messages only tell half the story. MrLogaLoga allows you to make the most of your logs:
+MrLogaLoga is a logger for Ruby that allows you to easily attach contextual information to your log messages. 
+When writing logs, messages only tell half the story. MrLogaLoga allows you to make the most of your logs.
 
 ```ruby
 logger.info('message', user: 'name', data: 1)
@@ -40,7 +41,7 @@ bundle install
 
 ## Usage
 
-MrLogaLoga provides the same interface as the Ruby default logger you are used to. In addition, however, you can attach contextual information to your log messages:
+MrLogaLoga provides the same interface as the Ruby default logger you are used to. In addition, however, you can attach contextual information to your log messages.
 
 ```ruby
 require 'mr_loga_loga'
@@ -66,7 +67,7 @@ logger.user('name').info('message') # Dynamic context method
 logger.user { 'name' }.info('message') # Dynamic context block
 ```
 
-The block syntax [ is recommended when logging calculated properties ](https://ruby-doc.org/stdlib-2.4.0/libdoc/logger/rdoc/Logger.html#class-Logger-label-How+to+log+a+message).
+The block syntax [ is recommended when logging calculated properties ](https://ruby-doc.org/stdlib-2.4.0/libdoc/logger/rdoc/Logger.html#class-Logger-label-How+to+log+a+message). You can find more in-depth information about specific method in the [Code Documentation](./doc).
 
 #### Shared Context
 
@@ -111,7 +112,6 @@ class MyClass
   end
 end
 ```
-
 
 ### Formatters
 

@@ -6,7 +6,7 @@ module MrLogaLoga
     #
     # This patches Lograge to forward data as context to MrLogaLoga.
     #
-    # We want lograge to forward requeest data not to it's own formatter and then to the logger, as this would make that
+    # We want Lograge to forward requeest data not to it's own formatter and then to the logger, as this would make that
     # data part of the message. Rather, where Lograge normally sends the formatted message to the logger we send the
     # raw data.
     #
@@ -14,7 +14,7 @@ module MrLogaLoga
     #
     # == Patches
     #
-    #    Lograge::LogSubscribers#process_main_event (private)
+    # - Lograge::LogSubscribers#process_main_event
     #
     module LogrageExtension
       class << self

@@ -12,7 +12,7 @@ require_relative 'mr_loga_loga/formatters/json'
 require_relative 'mr_loga_loga/extensions/rails'
 require_relative 'mr_loga_loga/extensions/lograge'
 
-# == Description
+# ## Description
 #
 # The MrLogaLoga module provides additional logging functionality when included in your classes.
 #

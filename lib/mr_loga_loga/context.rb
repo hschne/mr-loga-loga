@@ -12,12 +12,22 @@ module MrLogaLoga
       @context = context
     end
 
+    # Add a new context to the log message
+    #
+    # @param context [Hash] the new context
+    # @yield the new context
+    # @return [Context] a new context object
     def context(context = {}, &block)
       @context = merge_context(@context, context)
       @context = merge_context(@context, block)
       self
     end
 
+    # Log a message with the current context
+    #
+    # @param context [Hash] the new context
+    # @yield the new context
+    # @return [Context] a new context object
     def add(severity, message = nil, **context, &block)
       severity ||= UNKNOWN
       return true unless @logger.log?(severity)

@@ -188,3 +188,4 @@ tags
 # End of https://www.toptal.com/developers/gitignore/api/vim,rubymine+all,rails
 
 .rspec_status
+.yardoc

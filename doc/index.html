@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  File: README
+  
+    &mdash; Documentation by YARD 0.9.27
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" />
+
+<script type="text/javascript">
+  pathId = "README";
+  relpath = '';
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div class="nav_wrap">
+      <iframe id="nav" src="class_list.html?1"></iframe>
+      <div id="resizer"></div>
+    </div>
+
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
+  
+    <a href="_index.html">Index</a> &raquo; 
+    <span class="title">File: README</span>
+  
+</div>
+
+        <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="class_list.html">
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
+    </a>
+  
+</div>
+        <div class="clear"></div>
+      </div>
+
+      <div id="content"><div id='filecontents'><div align="center">
+
+# Mr. Loga Loga
+
+<img alt="logo" src="logo.png" width="300px" height="auto">
+
+### The simply bombastic, fantastic logger for Ruby 💎
+
+[![Gem Version](https://badge.fury.io/rb/mr_loga_loga.svg)](https://badge.fury.io/rb/mr_loga_loga)
+[![Main](https://github.com/hschne/mr-loga-loga/actions/workflows/main.yml/badge.svg)](https://github.com/hschne/mr-loga-loga/actions/workflows/main.yml)
+![License](https://img.shields.io/github/license/hschne/mr-loga-loga)
+</div>
+
+<h2 id="whats-this">What&#39;s this?</h2>
+
+<p>MrLogaLoga is a logger for Ruby that allows you to easily attach contextual information to your log messages. 
+When writing logs, messages only tell half the story. MrLogaLoga allows you to make the most of your logs.</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_logger'>logger</span><span class='period'>.</span><span class='id identifier rubyid_info'>info</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>message</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='label'>user:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>name</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='label'>data:</span> <span class='int'>1</span><span class='rparen'>)</span>
+<span class='comment'># I, [2022-01-01T12:00:00.000000 #19074]  INFO -- Main: message user=user data=1
+</span></code></pre>
+
+<p>You can find out more about the motivation behind the project <a href="#why-mrlogaloga">here</a>. For usage read <a href="#usage">Usage</a> or <a href="#advanced-usage">Advanced Usage</a></p>
+
+<p><strong>Note</strong>: This gem is in early development. Try it out and leave some feedback, it really goes a long way in helping me out with development. Any <a href="https://github.com/hschne/mr-loga-loga/issues/new?assignees=&labels=type%3ABug&template=FEATURE_REQUEST.md&title=">feature request</a> or <a href="https://github.com/hschne/mr-loga-loga/issues/new?assignees=&labels=type%3AEnhancement&template=BUG_REPORT.md&title=">bug report</a> is welcome. If you like this project, leave a star to show your support! ⭐</p>
+
+<h2 id="getting-started">Getting Started</h2>
+
+<p>Add this line to your application&#39;s Gemfile:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_gem'>gem</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>mr_loga_loga</span><span class='tstring_end'>&#39;</span></span>
+</code></pre>
+
+<p>And then execute:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_bundle'>bundle</span> <span class='id identifier rubyid_install'>install</span>
+</code></pre>
+
+<h2 id="usage">Usage</h2>
+
+<p>MrLogaLoga provides the same interface as the Ruby default logger you are used to. In addition, however, you can attach contextual information to your log messages.</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>mr_loga_loga</span><span class='tstring_end'>&#39;</span></span>
+
+<span class='id identifier rubyid_logger'>logger</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="MrLogaLoga.html" title="MrLogaLoga (module)">MrLogaLoga</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="MrLogaLoga/Logger.html" title="MrLogaLoga::Logger (class)">Logger</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="MrLogaLoga/Logger.html#initialize-instance_method" title="MrLogaLoga::Logger#initialize (method)">new</a></span></span>
+<span class='id identifier rubyid_logger'>logger</span><span class='period'>.</span><span class='id identifier rubyid_info'>info</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>message</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='label'>user:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>name</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='label'>data:</span> <span class='int'>1</span><span class='rparen'>)</span> 
+<span class='comment'># I, [2022-01-01T12:00:00.000000 #19074]  INFO -- Main: message user=user data=1
+</span><span class='id identifier rubyid_logger'>logger</span><span class='period'>.</span><span class='id identifier rubyid_context'>context</span><span class='lparen'>(</span><span class='label'>class:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>classname</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_warn'>warn</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>message</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> 
+<span class='comment'># W, [2022-01-01T12:00:00.000000 #19074]  WARN -- Main: message class=classname
+</span></code></pre>
+
+<p>To customize how log messages are formatted see [Formatters][#formatters].</p>
+
+<h2 id="advanced-usage">Advanced Usage</h2>
+
+<p>MrLogaLoga provides a fluent interface to build log messages. For example, to attach an additional <code>user</code> field to a log message you can use any of the following:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_logger'>logger</span><span class='period'>.</span><span class='id identifier rubyid_info'>info</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>message</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='label'>user:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>name</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+<span class='id identifier rubyid_logger'>logger</span><span class='period'>.</span><span class='id identifier rubyid_context'>context</span><span class='lparen'>(</span><span class='label'>user:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>name</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_info'>info</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>message</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='comment'># Explicit context
+</span><span class='id identifier rubyid_logger'>logger</span><span class='period'>.</span><span class='id identifier rubyid_context'>context</span> <span class='lbrace'>{</span> <span class='lbrace'>{</span> <span class='label'>user:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>name</span><span class='tstring_end'>&#39;</span></span> <span class='rbrace'>}</span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_info'>info</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>message</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='comment'># Block context
+</span><span class='id identifier rubyid_logger'>logger</span><span class='period'>.</span><span class='id identifier rubyid_user'>user</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>name</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_info'>info</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>message</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='comment'># Dynamic context method
+</span><span class='id identifier rubyid_logger'>logger</span><span class='period'>.</span><span class='id identifier rubyid_user'>user</span> <span class='lbrace'>{</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>name</span><span class='tstring_end'>&#39;</span></span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_info'>info</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>message</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='comment'># Dynamic context block
+</span></code></pre>
+
+<p>The block syntax <a href="https://ruby-doc.org/stdlib-2.4.0/libdoc/logger/rdoc/Logger.html#class-Logger-label-How+to+log+a+message"> is recommended when logging calculated properties </a>.</p>
+
+<h4 id="shared-context">Shared Context</h4>
+
+<p>If multiple log messages within the same class should share a context include the <code>MrLogaLoga</code> module. Using <code>logger</code> will result in the defined context being included per default:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='kw'>class</span> <span class='const'>MyClass</span> 
+  <span class='id identifier rubyid_include'>include</span> <span class='const'><span class='object_link'><a href="MrLogaLoga.html" title="MrLogaLoga (module)">MrLogaLoga</a></span></span>
+
+  <span class='comment'># This is the default. You may overwrite this in your own classes
+</span>  <span class='kw'>def</span> <span class='id identifier rubyid_loga_context'>loga_context</span> 
+     <span class='lbrace'>{</span> <span class='label'>class_name:</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span> <span class='rbrace'>}</span> 
+  <span class='kw'>end</span>
+
+  <span class='kw'>def</span> <span class='id identifier rubyid_log'>log</span>
+   <span class='comment'># This includes the class name in the log message now
+</span>   <span class='id identifier rubyid_logger'>logger</span><span class='period'>.</span><span class='id identifier rubyid_debug'>debug</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>debug</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='comment'># debug class_name=MyClass
+</span>   <span class='comment'># Additional context will be merged
+</span>   <span class='id identifier rubyid_logger'>logger</span><span class='period'>.</span><span class='id identifier rubyid_debug'>debug</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>debug</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='label'>user:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>user</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='comment'># debug class_name=MyClass user=user
+</span>  <span class='kw'>end</span>
+<span class='kw'>end</span>
+</code></pre>
+
+<p>When used with <a href="#rails">Rails</a> logger will default to <code>Rails.logger</code>. If you use MrLogaLoga outside of Rails, you can either configure the logger instance to be used globally, or by overwriting the <code>loga_loga</code> method:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='comment'># In some configuration class
+</span><span class='const'><span class='object_link'><a href="MrLogaLoga.html" title="MrLogaLoga (module)">MrLogaLoga</a></span></span><span class='period'>.</span><span class='id identifier rubyid_configure'><span class='object_link'><a href="MrLogaLoga.html#configure-class_method" title="MrLogaLoga.configure (method)">configure</a></span></span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_configuration'>configuration</span><span class='op'>|</span>
+  <span class='id identifier rubyid_logger'>logger</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="MrLogaLoga.html" title="MrLogaLoga (module)">MrLogaLoga</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="MrLogaLoga/Logger.html" title="MrLogaLoga::Logger (class)">Logger</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="MrLogaLoga/Logger.html#initialize-instance_method" title="MrLogaLoga::Logger#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='gvar'>$stdout</span><span class='rparen'>)</span>
+<span class='kw'>end</span>
+
+<span class='comment'># In the class where you do the logging itself
+</span><span class='kw'>class</span> <span class='const'>MyClass</span> 
+  <span class='id identifier rubyid_include'>include</span> <span class='const'><span class='object_link'><a href="MrLogaLoga.html" title="MrLogaLoga (module)">MrLogaLoga</a></span></span>
+
+  <span class='kw'>def</span> <span class='id identifier rubyid_loga_loga'>loga_loga</span>
+    <span class='const'><span class='object_link'><a href="MrLogaLoga.html" title="MrLogaLoga (module)">MrLogaLoga</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="MrLogaLoga/Logger.html" title="MrLogaLoga::Logger (class)">Logger</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="MrLogaLoga/Logger.html#initialize-instance_method" title="MrLogaLoga::Logger#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='gvar'>$stdout</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
+  <span class='kw'>def</span> <span class='id identifier rubyid_log'>log</span>
+    <span class='comment'># ...
+</span>  <span class='kw'>end</span>
+<span class='kw'>end</span>
+</code></pre>
+
+<h3 id="formatters">Formatters</h3>
+
+<p>MrLogaLoga uses the <a href="https://github.com/hschne/mr-loga-loga/blob/main/lib/mr_loga_loga/formatters/key_value.rb">KeyValue</a> formatter per default. The <a href="https://github.com/hschne/mr-loga-loga/blob/main/lib/mr_loga_loga/formatters/json.rb">Json</a> formatter is also included. To use a specific formatter pass it to the logger constructor:</p>
+
+<pre class="code Ruby"><code class="Ruby">
+MrLogaLoga::Logger.new(STDOUT, formatter: MrLogaLoga::Formatters::KeyValue.new)
+</code></pre>
+
+<p>You can implement and add your own formatters like so:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='kw'>class</span> <span class='const'>MyFormatter</span>
+  <span class='kw'>def</span> <span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='id identifier rubyid_severity'>severity</span><span class='comma'>,</span> <span class='id identifier rubyid_datetime'>datetime</span><span class='comma'>,</span> <span class='id identifier rubyid_progname'>progname</span><span class='comma'>,</span> <span class='id identifier rubyid_message'>message</span><span class='comma'>,</span> <span class='id identifier rubyid_context'>context</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_context'>context</span> <span class='op'>=</span> <span class='id identifier rubyid_context'>context</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_key'>key</span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='op'>|</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_key'>key</span><span class='embexpr_end'>}</span><span class='tstring_content'>=</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_value'>value</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_compact'>compact</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'> </span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+    <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_severity'>severity</span><span class='embexpr_end'>}</span><span class='tstring_content'> </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_datetime'>datetime</span><span class='period'>.</span><span class='id identifier rubyid_strftime'>strftime</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>%Y-%m-%dT%H:%M:%S.%6N</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_content'> </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_progname'>progname</span><span class='embexpr_end'>}</span><span class='tstring_content'> </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_message'>message</span><span class='embexpr_end'>}</span><span class='tstring_content'> </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_context'>context</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span>
+
+<span class='const'><span class='object_link'><a href="MrLogaLoga.html" title="MrLogaLoga (module)">MrLogaLoga</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="MrLogaLoga/Logger.html" title="MrLogaLoga::Logger (class)">Logger</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="MrLogaLoga/Logger.html#initialize-instance_method" title="MrLogaLoga::Logger#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='const'>STDOUT</span><span class='comma'>,</span> <span class='label'>formatter:</span> <span class='const'>MyFormatter</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='rparen'>)</span>
+</code></pre>
+
+<h3 id="rails">Rails</h3>
+
+<p>Using MrLogaLoga in Ruby on Rails is straightforward. Set up MrLogaLoga as logger in your <code>application.rb</code> or environment files and you are off to the races:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='comment'># application.rb
+</span><span class='id identifier rubyid_config'>config</span><span class='period'>.</span><span class='id identifier rubyid_logger'>logger</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="MrLogaLoga.html" title="MrLogaLoga (module)">MrLogaLoga</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="MrLogaLoga/Logger.html" title="MrLogaLoga::Logger (class)">Logger</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="MrLogaLoga/Logger.html#initialize-instance_method" title="MrLogaLoga::Logger#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='const'>STDOUT</span><span class='rparen'>)</span>
+<span class='id identifier rubyid_config'>config</span><span class='period'>.</span><span class='id identifier rubyid_log_level'>log_level</span> <span class='op'>=</span> <span class='symbol'>:info</span>
+</code></pre>
+
+<p>Note that setting <code>config.log_formatter</code> does not work. You must set the formatter in the logger constructor as described in <a href="#formatters">Formatters</a>.</p>
+
+<h3 id="lograge">Lograge</h3>
+
+<p><a href="https://github.com/roidrage/lograge">LogRage</a> and MrLogaLoga work well together. When using both gems Lograge will be patched so that data will be available as <code>context</code> in MrLogaLoga. Make sure that MrLogaLoga is required <strong>after</strong> Lograge: </p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_gem'>gem</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>lograge</span><span class='tstring_end'>&#39;</span></span>
+<span class='id identifier rubyid_gem'>gem</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>mr_loga_loga</span><span class='tstring_end'>&#39;</span></span>
+</code></pre>
+
+<p>Note that Lograge&#39;s formatters won&#39;t be used. Use MrLogaLoga&#39;s own <a href="#formatters">formatters</a> instead.</p>
+
+<h2 id="why-mrlogaloga">Why MrLogaLoga?</h2>
+
+<p>The more context your logs provide, the more use you will get out of them. The standard Ruby logger only takes a string as an argument, so you have to resort to something like this:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_logger'>logger</span><span class='period'>.</span><span class='id identifier rubyid_debug'>debug</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>my message user=</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_user'>user</span><span class='embexpr_end'>}</span><span class='tstring_content'> more_data=</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_data'>data</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+</code></pre>
+
+<p>This is fine, as long as you do not need to change your log format. Changing your log formatter will not change the format of your message, nor the formatting of the contextual information you provided.</p>
+
+<p>MrLogaLoga addresses this by allowing you to attach contextual information to your logs and giving you full control over how both message and context are formatted. There are other gems doing similar things, most notably <a href="https://logger.rocketjob.io/">Semantic Logger</a>. Where Semantic Logger provides lots of functionality related to logging, MrLogaLoga focuses on making it nice to write log messages - and nothing more. </p>
+
+<h2 id="credit">Credit</h2>
+
+<p>This little library was inspired by <a href="https://github.com/roidrage/lograge">Lograge</a> first and foremost. I would like to thank the amazing <a href="https://twitter.com/LenaSchnedlitz">@LenaSchnedlitz</a> for the incredible logo! 🤩</p>
+
+<h2 id="development">Development</h2>
+
+<p>After checking out the repo, run <code>bin/setup</code> to install dependencies. Then, run <code>rake</code> to run the tests and linter. You can also run <code>bin/console</code> for an interactive prompt that will allow you to experiment.</p>
+
+<p>To install this gem onto your local machine, run <code>bundle exec rake install</code>. To release a new version, update the version number in <code>version.rb</code>, and then run <code>bundle exec rake release</code>, which will create a git tag for the version, push git commits and the created tag, and push the <code>.gem</code> file to <a href="https://rubygems.org">rubygems.org</a>.</p>
+
+<h2 id="contributing">Contributing</h2>
+
+<p>Thank you for contributing! :heart:</p>
+
+<p>We welcome all support, whether on bug reports, code, design, reviews, tests, documentation, translations, or just feature requests.</p>
+
+<p>Please use <a href="https://github.com/hschne/rails-mini-profiler/issues">GitHub issues</a> to submit bugs or feature requests.</p>
+
+<h2 id="license">License</h2>
+
+<p>The gem is available as open-source under the terms of the <a href="https://opensource.org/licenses/MIT">MIT License</a>.</p>
+
+<h2 id="code-of-conduct">Code of Conduct</h2>
+
+<p>Everyone interacting in the MrLogaLoga project&#39;s codebases, issue trackers, chat rooms, and mailing lists is expected to follow the <a href="https://github.com/hschne/mr_loga_loga/blob/master/CODE_OF_CONDUCT.md">code of conduct</a>.</p>
+</div></div>
+
+      <div id="footer">
+  Generated on Wed Jan  5 09:40:27 2022 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.9.27 (ruby-3.0.0).
+</div>
+
+    </div>
+  </body>
+</html>

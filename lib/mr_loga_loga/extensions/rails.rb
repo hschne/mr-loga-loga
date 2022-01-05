@@ -14,8 +14,8 @@ module MrLogaLoga
     #
     # == Patches
     #
-    #    ActiveSupport::Logger#self.broadcast
-    #    Rails::Server#log_to_stdout (private)
+    # - {ActiveSupport::Logger#self.broadcast}
+    # - {Rails::Server#log_to_stdout}
     #
     module RailsExtension
       class << self

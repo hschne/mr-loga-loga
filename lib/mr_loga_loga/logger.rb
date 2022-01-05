@@ -19,22 +19,20 @@ module MrLogaLoga
   #
   #   logger.debug("Default")
   #   logger.context(user: 1).debug('with context')
+  #
   class Logger < ::Logger
     def initialize(*args, **kwargs)
       super
       @default_formatter = MrLogaLoga::Formatters::KeyValue.new
     end
 
+    # Generates a new context
     def context(**kwargs, &block)
       context = block ? -> { kwargs.merge(block.call) } : kwargs
       Context.new(self, context)
     end
 
-    def message(message, &block)
-      message ||= block
-      Message.new(self, message)
-    end
-
+    # Adds a new log message with the given severity
     def add(severity, message = nil, progname = nil, *_args, **context, &block)
       severity ||= UNKNOWN
       return true unless log?(severity)
