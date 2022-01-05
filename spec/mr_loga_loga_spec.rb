@@ -16,6 +16,22 @@ RSpec.describe MrLogaLoga do
 
     after { Timecop.return }
 
+    describe 'configure' do
+      let(:logger) { Logger.new($stdout) }
+
+      before do
+        MrLogaLoga.configure do |config|
+          config.logger = logger
+        end
+      end
+
+      after { MrLogaLoga.configuration.reset }
+
+      it 'should configure logger' do
+        expect(MrLogaLoga.configuration.logger).to eq(logger)
+      end
+    end
+
     describe 'context' do
       let(:log_message) { "D, [#{time}##{Process.pid}] DEBUG -- : message a=1\n" }
 
