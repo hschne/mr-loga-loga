@@ -9,6 +9,9 @@
 [![Gem Version](https://badge.fury.io/rb/mr_loga_loga.svg)](https://badge.fury.io/rb/mr_loga_loga)
 [![Main](https://github.com/hschne/mr-loga-loga/actions/workflows/main.yml/badge.svg)](https://github.com/hschne/mr-loga-loga/actions/workflows/main.yml)
 ![License](https://img.shields.io/github/license/hschne/mr-loga-loga)
+
+[![Maintainability](https://api.codeclimate.com/v1/badges/7cdd4779e6c62bce6ba0/maintainability)](https://codeclimate.com/github/hschne/mr-loga-loga/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/7cdd4779e6c62bce6ba0/test_coverage)](https://codeclimate.com/github/hschne/mr-loga-loga/test_coverage)
 </div>
 
 ## What's this?
