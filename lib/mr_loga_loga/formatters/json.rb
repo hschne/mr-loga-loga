@@ -25,14 +25,14 @@ module MrLogaLoga
       #
       # @return [String] the formatted log message
       def call(severity, datetime, progname, message, **context)
-        message = message.nil? || message.empty? ? nil : msg2str(message)
+        message = message.nil? ? '' : msg2str(message)
 
         message_hash = {
           severity: severity,
           datetime: datetime.strftime('%Y-%m-%dT%H:%M:%S.%6N'),
           pid: Process.pid,
           progname: progname,
-          message: message,
+          message: (message.empty? ? nil : message),
           **context
         }.compact
         "#{message_hash.to_json}\n"
