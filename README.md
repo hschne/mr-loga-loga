@@ -186,7 +186,7 @@ Thank you for contributing! :heart:
 
 We welcome all support, whether on bug reports, code, design, reviews, tests, documentation, translations, or just feature requests.
 
-Please use [GitHub issues](https://github.com/hschne/rails-mini-profiler/issues) to submit bugs or feature requests.
+Please use [GitHub issues](https://github.com/hschne/mr-loga-loga/issues) to submit bugs or feature requests.
 
 ## License
 
