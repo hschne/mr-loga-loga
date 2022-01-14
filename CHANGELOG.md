@@ -1,5 +1,12 @@
 ## [Unreleased]
 
+### [0.1.3](https://github.com/hschne/mr-loga-loga/compare/v0.1.2...v0.1.3) (2022-01-14)
+
+
+### Bug Fixes
+
+* json formatter errors ([874f3dd](https://github.com/hschne/mr-loga-loga/commit/874f3dd480e05792712495eb6b7c77c35474adc1))
+
 ### [0.1.2](https://github.com/hschne/mr-loga-loga/compare/v0.1.1...v0.1.2) (2022-01-05)
 
 
