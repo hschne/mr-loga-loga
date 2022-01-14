@@ -126,7 +126,7 @@ You can implement and add your own formatters like so:
 
 ```ruby
 class MyFormatter
-  def call(severity, datetime, progname, message, context)
+  def call(severity, datetime, progname, message, **context)
     context = context.map { |key, value| "#{key}=#{value}" }.compact.join(' ')
     "#{severity} #{datetime.strftime('%Y-%m-%dT%H:%M:%S.%6N')} #{progname} #{message} #{context}"
   end
