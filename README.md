@@ -24,7 +24,7 @@ logger.info('message', user: 'name', data: 1)
 # I, [2022-01-01T12:00:00.000000 #19074]  INFO -- Main: message user=user data=1
 ```
 
-You can find out more about the motivation behind the project [here](#why-mrlogaloga). For usage read [Usage](#usage) or [Advanced Usage](#advanced-usage)
+You can find out more about the motivation behind the project [here](#why-mrlogaloga). For usage read [Usage](#usage) or [Advanced Usage](#advanced-usage).
 
 **Note**: This gem is in early development. Try it out and leave some feedback, it really goes a long way in helping me out with development. Any [feature request](https://github.com/hschne/mr-loga-loga/issues/new?assignees=&labels=type%3ABug&template=FEATURE_REQUEST.md&title=) or [bug report](https://github.com/hschne/mr-loga-loga/issues/new?assignees=&labels=type%3AEnhancement&template=BUG_REPORT.md&title=) is welcome. If you like this project, leave a star to show your support! ⭐
 
