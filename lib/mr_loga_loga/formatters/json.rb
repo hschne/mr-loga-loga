@@ -20,7 +20,7 @@ module MrLogaLoga
       # @param severity [String] The message severity
       # @param datetime [DateTime] The message date time
       # @param progname [DateTime] The program name
-      # @param message [String] The log message
+      # @param message [Object] The log message, which may not be a string
       # @param context [Hash] The log message context
       #
       # @return [String] the formatted log message
