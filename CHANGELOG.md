@@ -1,5 +1,12 @@
 ## [Unreleased]
 
+### [0.1.4](https://github.com/hschne/mr-loga-loga/compare/v0.1.3...v0.1.4) (2022-01-22)
+
+
+### Bug Fixes
+
+* error formatting for keyvalue formatter, fixes [#7](https://github.com/hschne/mr-loga-loga/issues/7) ([a64d822](https://github.com/hschne/mr-loga-loga/commit/a64d8225691d55e1eb42df57afcb950d76f5f59b))
+
 ### [0.1.3](https://github.com/hschne/mr-loga-loga/compare/v0.1.2...v0.1.3) (2022-01-14)
 
 
