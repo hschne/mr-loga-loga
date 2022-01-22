@@ -12,6 +12,18 @@ module MrLogaLoga
         expect(subject.call('DEBUG', Time.now, 'progname', 'message', key1: 'key1', key2: 2))
           .to eq(expected)
       end
+
+      it 'should format exceptions' do
+        expected = "D, [2020-01-01T00:00:00.000000 ##{Process.pid}] DEBUG -- progname: error (StandardError)\n"
+        expect(subject.call('DEBUG', Time.now, 'progname', StandardError.new('error')))
+          .to eq(expected)
+      end
+
+      it 'should work with non-strings' do
+        expected = "D, [2020-01-01T00:00:00.000000 ##{Process.pid}] DEBUG -- progname: 200\n"
+        expect(subject.call('DEBUG', Time.now, 'progname', 200))
+          .to eq(expected)
+      end
     end
   end
 end
