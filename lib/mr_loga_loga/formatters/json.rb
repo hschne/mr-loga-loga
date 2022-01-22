@@ -25,7 +25,7 @@ module MrLogaLoga
       #
       # @return [String] the formatted log message
       def call(severity, datetime, progname, message, **context)
-        message = message.nil? ? '' : msg2str(message)
+        message = message.nil? ? '' : msg2str(message).strip
 
         message_hash = {
           severity: severity,

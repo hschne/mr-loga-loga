@@ -14,8 +14,8 @@ module MrLogaLoga
       end
 
       it 'should format exceptions' do
-        expected = "D, [2020-01-01T00:00:00.000000 ##{Process.pid}] DEBUG -- progname: error (StandardError)\n"
-        expect(subject.call('DEBUG', Time.now, 'progname', StandardError.new('error')))
+        expected = "D, [2020-01-01T00:00:00.000000 ##{Process.pid}] DEBUG -- progname: error (StandardError) key1=1\n"
+        expect(subject.call('DEBUG', Time.now, 'progname', StandardError.new('error'), key1: '1'))
           .to eq(expected)
       end
 
