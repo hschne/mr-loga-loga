@@ -1,5 +1,12 @@
 ## [Unreleased]
 
+### [0.1.5](https://github.com/hschne/mr-loga-loga/compare/v0.1.4...v0.1.5) (2022-01-25)
+
+
+### Bug Fixes
+
+* error for server command patch ([#11](https://github.com/hschne/mr-loga-loga/issues/11)) ([5c560fa](https://github.com/hschne/mr-loga-loga/commit/5c560fae8e917c1921343aed56dbe25da82a1735))
+
 ### [0.1.4](https://github.com/hschne/mr-loga-loga/compare/v0.1.3...v0.1.4) (2022-01-22)
 
 
