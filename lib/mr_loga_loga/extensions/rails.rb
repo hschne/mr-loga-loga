@@ -22,25 +22,37 @@ module MrLogaLoga
         def apply
           return unless defined?(Rails)
 
-          logger_defined = defined?(ActiveSupport::Logger)
-          unless logger_defined && broadcast_method
-            puts "WARNING: Failed to patch ActiveSupport::Logger. It looks like MrLogaLoga's patch in #{__FILE__} no "\
-                 "longer applies. Please contact MrLogaLoga's maintainers."
-            return
-          end
+          patch_logger
+          patch_server
+        end
 
+        private
+
+        def patch_server
           server_defined = defined?(Rails::Server)
-          unless server_defined && Rails::Server.private_method_defined?(:log_to_stdout)
+          return unless server_defined
+
+          unless Rails::Server.private_method_defined?(:log_to_stdout)
             puts "WARNING: Failed to patch Rails::Server. It looks like MrLogaLoga's patch in #{__FILE__} no "\
                  "longer applies. Please contact MrLogaLoga's maintainers."
             return
           end
 
-          ActiveSupport::Logger.include(LoggerPatch)
           Rails::Server.prepend(ServerPatch)
         end
 
-        private
+        def patch_logger
+          logger_defined = defined?(ActiveSupport::Logger)
+          return unless logger_defined
+
+          unless broadcast_method
+            puts "WARNING: Failed to patch ActiveSupport::Logger. It looks like MrLogaLoga's patch in #{__FILE__} no "\
+                 "longer applies. Please contact MrLogaLoga's maintainers."
+            return
+          end
+
+          ActiveSupport::Logger.include(LoggerPatch)
+        end
 
         def broadcast_method
           broadcast = ActiveSupport::Logger.method(:broadcast)
