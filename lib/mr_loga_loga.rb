@@ -2,15 +2,13 @@
 
 require_relative 'mr_loga_loga/version'
 require_relative 'mr_loga_loga/configuration'
-require_relative 'mr_loga_loga/logger_proxy'
 require_relative 'mr_loga_loga/instance_methods'
+require_relative 'mr_loga_loga/logger_data'
+require_relative 'mr_loga_loga/log_message'
 require_relative 'mr_loga_loga/context'
 require_relative 'mr_loga_loga/logger'
 require_relative 'mr_loga_loga/formatters/key_value'
 require_relative 'mr_loga_loga/formatters/json'
-
-require_relative 'mr_loga_loga/extensions/rails'
-require_relative 'mr_loga_loga/extensions/lograge'
 
 # ## Description
 #

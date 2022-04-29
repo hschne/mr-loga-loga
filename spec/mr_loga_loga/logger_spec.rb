@@ -4,11 +4,11 @@ module MrLogaLoga
   RSpec.describe Logger do
     subject { described_class.new($stdout, formatter: formatter) }
 
-    let(:formatter) { ->(severity, _datetime, _progname, message, **_context) { "#{severity} #{message}" } }
+    let(:formatter) { ->(severity, _datetime, _progname, message, _context) { "#{severity} #{message}" } }
 
     describe '#add' do
       context 'level' do
-        let(:formatter) { ->(severity, _datetime, _progname, _message, **_context) { severity } }
+        let(:formatter) { ->(severity, _datetime, _progname, _message, _context) { severity } }
 
         subject { described_class.new($stdout, formatter: formatter, level: 3) }
 
@@ -22,7 +22,7 @@ module MrLogaLoga
       end
 
       context 'severity' do
-        let(:formatter) { ->(severity, _datetime, _progname, _message, **_context) { severity } }
+        let(:formatter) { ->(severity, _datetime, _progname, _message, _context) { severity } }
 
         it 'should log severity' do
           expect { subject.log(Logger::Severity::DEBUG, 'message') }.to output('DEBUG').to_stdout
@@ -30,7 +30,7 @@ module MrLogaLoga
       end
 
       context 'date time' do
-        let(:formatter) { ->(_severity, datetime, _progname, _message, **_context) { datetime.to_s } }
+        let(:formatter) { ->(_severity, datetime, _progname, _message, _context) { datetime.to_s } }
 
         it 'should log time' do
           expect { subject.log(Logger::Severity::DEBUG, 'message') }.to output(Time.now.to_s).to_stdout
@@ -38,7 +38,7 @@ module MrLogaLoga
       end
 
       context 'message' do
-        let(:formatter) { ->(_severity, _datetime, _progname, message, **_context) { message } }
+        let(:formatter) { ->(_severity, _datetime, _progname, message, _context) { message } }
 
         it 'should log message' do
           expect { subject.log(Logger::Severity::DEBUG, 'message') }.to output('message').to_stdout
@@ -55,18 +55,27 @@ module MrLogaLoga
             expect { subject.log(Logger::Severity::DEBUG) { 'message' } }.to output('message').to_stdout
           end
 
-          it 'should not overwrite arg message' do
-            expect { subject.log(Logger::Severity::DEBUG, 'arg') { 'message' } }.to output('arg').to_stdout
+          it 'should overwrite arg message' do
+            expect { subject.log(Logger::Severity::DEBUG, 'arg') { 'message' } }.to output('message').to_stdout
           end
         end
       end
 
       context 'context' do
-        let(:formatter) { ->(_severity, _datetime, _progname, _message, context) { context.to_s } }
+        let(:formatter) do
+          lambda { |_severity, _datetime, _progname, message, context|
+            [message, context].compact.join(',')
+          }
+        end
 
         it 'should log kwargs context' do
           context = { a: 1, b: 2 }
-          expect { subject.log(Logger::Severity::DEBUG, **context) }.to output(context.to_s).to_stdout
+          expect { subject.log(Logger::Severity::DEBUG, context) }.to output(context.to_s).to_stdout
+        end
+
+        it 'should log explicit context' do
+          context = { a: 1, b: 2 }
+          expect { subject.context(context).debug('message') }.to output("message,#{context}").to_stdout
         end
       end
     end
@@ -89,6 +98,7 @@ module MrLogaLoga
         expect { subject.a(2) { 1 }.add(Logger::Severity::DEBUG) }.to output(context.to_s).to_stdout
       end
     end
+
     describe '#log?' do
       context 'without log dev' do
         subject { described_class.new(nil, formatter: formatter) }

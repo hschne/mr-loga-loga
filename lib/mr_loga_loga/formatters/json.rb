@@ -22,9 +22,8 @@ module MrLogaLoga
       # @param progname [DateTime] The program name
       # @param message [Object] The log message, which may not be a string
       # @param context [Hash] The log message context
-      #
       # @return [String] the formatted log message
-      def call(severity, datetime, progname, message, **context)
+      def call(severity, datetime, progname, message, context)
         message = message.nil? ? '' : msg2str(message).strip
 
         message_hash = {

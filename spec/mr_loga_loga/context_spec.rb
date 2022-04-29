@@ -2,7 +2,7 @@
 
 module MrLogaLoga
   RSpec.describe Context do
-    let(:formatter) { ->(_severity, _datetime, _progname, _message, context) { context.to_s } }
+    let(:formatter) { ->(_severity, _datetime, _progname, message, data) { [message, data].compact.join(',') } }
 
     let(:logger) { MrLogaLoga::Logger.new($stdout, formatter: formatter) }
 
@@ -18,11 +18,21 @@ module MrLogaLoga
       it 'should merge context' do
         expect { subject.add(Logger::Severity::DEBUG, b: 2) }.to output({ a: 1, b: 2 }.to_s).to_stdout
       end
+
+      it 'should merge with block message' do
+        expected = { a: 1 }
+        expect { subject.add(Logger::Severity::DEBUG) { 'message' } }.to output("message,#{expected}").to_stdout
+      end
     end
 
     describe '#debug' do
       it 'should log context' do
         expect { subject.debug }.to output(context.to_s).to_stdout
+      end
+
+      it 'should log with block message' do
+        expected = { a: 1 }
+        expect { subject.debug { 'message' } }.to output("message,#{expected}").to_stdout
       end
     end
 
