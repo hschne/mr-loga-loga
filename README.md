@@ -161,6 +161,20 @@ gem 'mr_loga_loga'
 
 Note that Lograge's formatters won't be used. Use MrLogaLoga's own [formatters](#formatters) instead.
 
+### Sidekiq
+
+You can use MrLogaLoga iwth [Sidekiq](https://github.com/mperham/sidekiq) by configuring it like so: 
+
+```ruby
+Sidekiq.configure_server do |config|
+  config.logger = MrLogaLoga::Logger.new($stdout)
+
+  config.error_handlers << lambda do |exception, ctx|
+    Sidekiq.logger.warn(exception, job: ctx[:job])
+  end
+end
+```
+
 ## Why MrLogaLoga?
 
 The more context your logs provide, the more use you will get out of them. The standard Ruby logger only takes a string as an argument, so you have to resort to something like this:
@@ -175,7 +189,7 @@ MrLogaLoga addresses this by allowing you to attach contextual information to yo
 
 ## Credit
 
-This little library was inspired by [Lograge](https://github.com/roidrage/lograge) first and foremost. I would like to thank the amazing [@LenaSchnedlitz](https://twitter.com/LenaSchnedlitz) for the incredible logo! 🤩
+This little library was inspired by [Lograge](https://github.com/roidrage/lograge) first and foremost. Some inspiration was taken from [ougai](https://github.com/tilfin/ougai). I would like to thank the amazing [@LenaSchnedlitz](https://twitter.com/LenaSchnedlitz) for the incredible logo! 🤩
 
 ## Development
 
