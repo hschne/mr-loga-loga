@@ -45,7 +45,7 @@ module MrLogaLoga
           message: '200'
         }
         expected = "#{expected.to_json}\n"
-        expect(subject.call('DEBUG', Time.now, 'progname', 200))
+        expect(subject.call('DEBUG', Time.now, 'progname', 200, {}))
           .to eq(expected)
       end
 

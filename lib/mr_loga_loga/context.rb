@@ -28,26 +28,29 @@ module MrLogaLoga
     # @param context [Hash] the new context
     # @yield the new context
     # @return [Context] a new context object
-    def add(severity, message = nil, **context, &block)
+    def add(severity, message = nil, context = nil, progname = nil, &block)
       severity ||= UNKNOWN
       return true unless @logger.log?(severity)
 
+      message, context = LoggerData.build(message, context, &block)
       context = merge_context(@context, context)
       context = context.call if context.is_a?(Proc)
 
-      @logger.add(severity, message, **context, &block)
+      @logger.add(severity, LogMessage.new(message, context), progname, &block)
     end
 
     alias log add
 
     %i[debug info warn error fatal unknown].each do |symbol|
-      define_method(symbol) do |message = nil, **context, &block|
+      define_method(symbol) do |message = nil, context = nil, progname = nil, &block|
         severity = Object.const_get("Logger::Severity::#{symbol.to_s.upcase}")
         return true unless @logger.log?(severity)
 
+        message, context = LoggerData.build(message, context, &block)
         context = merge_context(@context, context)
         context = context.call if context.is_a?(Proc)
-        @logger.public_send(symbol, message, **context, &block)
+
+        @logger.add(severity, LogMessage.new(message, context), progname, &block)
       end
     end
 

@@ -2,7 +2,7 @@
 
 module MrLogaLoga
   RSpec.describe InstanceMethods do
-    let(:formatter) { ->(_severity, _datetime, _progname, _message = nil, context) { context.to_s } }
+    let(:formatter) { ->(_severity, _datetime, _progname, _message, data) { data.to_s } }
 
     let(:logger) { MrLogaLoga::Logger.new($stdout, formatter: formatter) }
 
@@ -13,14 +13,8 @@ module MrLogaLoga
     end
 
     context 'logger' do
-      it 'returns logger proxy of logger' do
-        expect(subject.logger).to be_a(MrLogaLoga::LoggerProxy)
-      end
-    end
-
-    context 'unknown method' do
-      it 'should raise error' do
-        expect { subject.loga_loga.invalid }.to raise_error(NoMethodError)
+      it 'returns logger' do
+        expect(subject.logger).to be_a(MrLogaLoga::Context)
       end
     end
   end

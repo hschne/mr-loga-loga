@@ -14,7 +14,7 @@ module MrLogaLoga
     # A shorthand method to use in your classes
     def logger
       if loga_loga.is_a?(MrLogaLoga::Logger)
-        MrLogaLoga::LoggerProxy.new(loga_loga, -> { loga_context })
+        loga_loga.context { loga_context }
       else
         loga_loga
       end

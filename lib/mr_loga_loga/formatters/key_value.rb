@@ -24,8 +24,8 @@ module MrLogaLoga
       # @param context [Hash] The log message context
       #
       # @return [String] the formatted log message
-      def call(severity, datetime, progname, message, **context)
-        message = msg2str(message).strip
+      def call(severity, datetime, progname, message, context = {})
+        message = message ? msg2str(message).strip : ''
         message = context.map { |key, value| "#{key}=#{value}" }
                     .prepend(message)
                     .compact
