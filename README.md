@@ -144,34 +144,35 @@ Using MrLogaLoga in Ruby on Rails is straightforward. Set up MrLogaLoga as logge
 
 ```ruby
 # application.rb
-config.logger = MrLogaLoga::Logger.new(STDOUT)
-config.log_level = :info
+config.log_formatter = MrLogaLoga::Formatters::KeyValue.new
+config.logger = MrLogaLoga::Logger.new($stdout, formatter: config.log_formatter)
 ```
 
 Note that setting `config.log_formatter` does not work. You must set the formatter in the logger constructor as described in [Formatters](#formatters).
 
 ### Lograge
 
-[LogRage](https://github.com/roidrage/lograge) and MrLogaLoga work well together. When using both gems Lograge will be patched so that data will be available as `context` in MrLogaLoga. Make sure that MrLogaLoga is required **after** Lograge: 
+[LogRage](https://github.com/roidrage/lograge) and MrLogaLoga work well together. You must set lograge to use the raw formatter, however: 
 
 ```ruby
-gem 'lograge'
-gem 'mr_loga_loga'
+Rails.application.configure do
+  config.lograge.enabled = true
+  config.lograge.formatter = Lograge::Formatters::Raw.new
+end
 ```
-
-Note that Lograge's formatters won't be used. Use MrLogaLoga's own [formatters](#formatters) instead.
 
 ### Sidekiq
 
-You can use MrLogaLoga iwth [Sidekiq](https://github.com/mperham/sidekiq) by configuring it like so: 
+You can use MrLogaLoga with [Sidekiq](https://github.com/mperham/sidekiq) by configuring it like so: 
 
 ```ruby
 Sidekiq.configure_server do |config|
-  config.logger = MrLogaLoga::Logger.new($stdout)
-
-  config.error_handlers << lambda do |exception, ctx|
-    Sidekiq.logger.warn(exception, job: ctx[:job])
-  end
+  config.logger = MrLogaLoga::Logger.new($stdout, formatter: MrLogaLoga::Formatters::Json.new)
+  config.logger.level = Logger::INFO
+  
+  # Remove existing error handlers to avoid double logging
+  config.error_handlers.clear
+  config.error_handlers << proc { |ex, context| Sidekiq.logger.warn(ex, context[:job]) }
 end
 ```
 
