@@ -138,6 +138,8 @@ end
 MrLogaLoga::Logger.new(STDOUT, formatter: MyFormatter.new)
 ```
 
+## Usage with Other Gems
+
 ### Rails
 
 Using MrLogaLoga in Ruby on Rails is straightforward. Set up MrLogaLoga as logger in your `application.rb` or environment files and you are off to the races:
