@@ -140,6 +140,8 @@ MrLogaLoga::Logger.new(STDOUT, formatter: MyFormatter.new)
 
 ## Usage with Other Gems
 
+This section describes how you can use MrLogaLoga together with other well-known gems.
+
 ### Rails
 
 Using MrLogaLoga in Ruby on Rails is straightforward. Set up MrLogaLoga as logger in your `application.rb` or environment files and you are off to the races:
@@ -163,6 +165,8 @@ Rails.application.configure do
 end
 ```
 
+
+
 ### Sidekiq
 
 You can use MrLogaLoga with [Sidekiq](https://github.com/mperham/sidekiq) by configuring it like so: 
@@ -175,6 +179,14 @@ Sidekiq.configure_server do |config|
   # Remove existing error handlers to avoid double logging
   config.error_handlers.clear
   config.error_handlers << proc { |ex, context| Sidekiq.logger.warn(ex, context[:job]) }
+end
+```
+
+If you want to use MrLogaLoga's helper methods in your workers you must include `MrLogaLoga` after including `Sidekiq`: 
+```ruby
+class MyWorker
+  include Sidekiq::Worker
+  include MrLogaLoga
 end
 ```
 
