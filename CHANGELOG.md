@@ -1,5 +1,16 @@
 ## [Unreleased]
 
+## [0.2.0](https://github.com/hschne/mr-loga-loga/compare/v0.1.5...v0.2.0) (2022-05-06)
+
+
+### ⚠ BREAKING CHANGES
+
+* improve compatibility by changing signature (#20)
+
+### Features
+
+* improve compatibility by changing signature ([#20](https://github.com/hschne/mr-loga-loga/issues/20)) ([01e6f0f](https://github.com/hschne/mr-loga-loga/commit/01e6f0fd0482c141117a71b78ba008e97c63d808))
+
 ### [0.1.5](https://github.com/hschne/mr-loga-loga/compare/v0.1.4...v0.1.5) (2022-01-25)
 
 
