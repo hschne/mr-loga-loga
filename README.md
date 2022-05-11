@@ -152,7 +152,20 @@ config.log_formatter = MrLogaLoga::Formatters::KeyValue.new
 config.logger = MrLogaLoga::Logger.new($stdout, formatter: config.log_formatter)
 ```
 
-Note that setting `config.log_formatter` does not work. You must set the formatter in the logger constructor as described in [Formatters](#formatters).
+In order to use MrLogaLoga together with tagged logging you may have to patch `ActiveSupport::TaggedLogging`: 
+```ruby
+module ActiveSupport
+  module TaggedLogging
+    module Formatter
+      def call(severity, time, progname, message, context)
+        tags = current_tags
+        context[:tags] = tags if tags.present?
+        super(severity, time, progname, message, context)
+      end
+    end
+  end
+end
+```
 
 ### Lograge
 
