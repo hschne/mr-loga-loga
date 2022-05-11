@@ -186,7 +186,8 @@ You can use MrLogaLoga with [Sidekiq](https://github.com/mperham/sidekiq) by con
 
 ```ruby
 Sidekiq.configure_server do |config|
-  config.logger = MrLogaLoga::Logger.new($stdout, formatter: MrLogaLoga::Formatters::Json.new)
+  logger = MrLogaLoga::Logger.new($stdout, formatter: MrLogaLoga::Formatters::Json.new)
+  config.logger = logger.context { Thread.current[:sidekiq_context] || {} }
   config.logger.level = Logger::INFO
   
   # Remove existing error handlers to avoid double logging
