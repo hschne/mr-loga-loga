@@ -14,7 +14,7 @@ GEM
     parser (3.1.2.1)
       ast (~> 2.4.1)
     rainbow (3.1.1)
-    rake (13.0.6)
+    rake (13.1.0)
     regexp_parser (2.6.0)
     rexml (3.2.5)
     rspec (3.11.0)
@@ -60,7 +60,7 @@ PLATFORMS
 
 DEPENDENCIES
   mr_loga_loga!
-  rake (~> 13.0)
+  rake (~> 13.1)
   rspec (~> 3.11)
   rubocop (~> 1.39)
   simplecov (~> 0.21)
