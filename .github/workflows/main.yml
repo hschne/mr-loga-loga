@@ -54,4 +54,4 @@ jobs:
         run: bundle exec rake rubocop
 
       - name: Lint Commits 📝
-        uses: wagoid/commitlint-github-action@v5
+        uses: wagoid/commitlint-github-action@v6
