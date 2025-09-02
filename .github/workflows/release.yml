@@ -17,7 +17,7 @@ jobs:
       version: ${{ steps.release.outputs.major }}.${{ steps.release.outputs.minor }}.${{ steps.release.outputs.patch }}
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Generate Release 🗒️
         uses: GoogleCloudPlatform/release-please-action@v4
         id: release
@@ -33,7 +33,7 @@ jobs:
     if: needs.prepare-release.outputs.release_created || github.event_name == 'workflow_dispatch'
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
